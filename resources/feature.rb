@@ -32,7 +32,9 @@ end
 
 private
 def locate_default_provider
-  if ::File.exists?(locate_sysnative_cmd('dism.exe'))
+  if ::File.exists?(locate_sysnative_cmd('WindowsPowerShell\v1.0\Modules\ServerManager\ServerManager.psd1'))
+    :windows_feature_servermanagermodule
+  elsif ::File.exists?(locate_sysnative_cmd('dism.exe'))
     :windows_feature_dism
   elsif ::File.exists?(locate_sysnative_cmd('servermanagercmd.exe'))
     :windows_feature_servermanagercmd
